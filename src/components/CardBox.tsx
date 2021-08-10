@@ -1,18 +1,25 @@
 import React from "react";
 import { StyleSheet } from "react-native";
-// import styled from 'styled-components'
+import styled from "styled-components";
 import { View, Text, ImageBackground } from "react-native";
 
-// const Card = styled(View)`
-//   padding: 2em;
-//   border: 1px solid;
-//   background: red;
-// `;
+const Card = styled(View)`
+  display: flex;
+  margin: 2px 10px;
+  height: 180px;
+  border-radius: 10;
+`;
 
-// const CardContent = styled(Text)`
-//   color: #fff;
-//   font-size: 2em;
-// `;
+const Box = styled(View)`
+  height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
+
+const CardContent = styled(Text)`
+  color: #fff;
+`;
 
 interface IProps {
   text: string;
@@ -21,15 +28,18 @@ interface IProps {
 
 const CardBox = (props: IProps) => {
   return (
-    <View>
+    <Card>
       <ImageBackground
         source={props.image}
         resizeMode="cover"
+        imageStyle={{ borderRadius: 10 }}
         style={styles.container}
       >
-        <Text>{props.text}</Text>
+        <Box>
+          <CardContent>{props.text}</CardContent>
+        </Box>
       </ImageBackground>
-    </View>
+    </Card>
   );
 };
 
@@ -39,6 +49,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     position: "relative",
-    resizeMode: "cover",
   },
 });
