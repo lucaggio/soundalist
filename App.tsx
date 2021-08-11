@@ -6,6 +6,7 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import useCachedResources from "./src/hooks/useCachedResources";
 import useColorScheme from "./src/hooks/useColorScheme";
 import Navigation from "./src/navigation";
+import GenreScreen from "./src/screens/GenreScreen";
 
 export default function App() {
   const isLoadingComplete = useCachedResources();
@@ -15,10 +16,11 @@ export default function App() {
     return null;
   } else {
     return (
-      <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
-        <StatusBar />
-      </SafeAreaProvider>
+      // <SafeAreaProvider>
+      //   <Navigation colorScheme={colorScheme} />
+      //   <StatusBar />
+      // </SafeAreaProvider>
+      <GenreScreen/>
     );
   }
 }

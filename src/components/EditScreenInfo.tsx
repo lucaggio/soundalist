@@ -47,8 +47,8 @@ export default function EditScreenInfo({ path }: { path: string }) {
         </TouchableOpacity>
       </View>
       <CardBox
-        image={require("../assets/images/try.jpg")}
-        text="ciao bello"
+        image={require("../assets/images/techno.jpg")}
+        text="TECHNO"
       ></CardBox>
     </View>
   );

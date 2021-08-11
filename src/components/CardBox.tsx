@@ -5,7 +5,7 @@ import { View, Text, ImageBackground } from "react-native";
 
 const Card = styled(View)`
   display: flex;
-  margin: 2px 10px;
+  margin: 5px 10px;
   height: 180px;
   border-radius: 10;
 `;
@@ -19,6 +19,7 @@ const Box = styled(View)`
 
 const CardContent = styled(Text)`
   color: #fff;
+  font-size: 50;
 `;
 
 interface IProps {
