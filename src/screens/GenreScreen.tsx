@@ -3,16 +3,18 @@ import styled from "styled-components";
 import CardBox from "../components/CardBox";
 import { Text, View } from "react-native";
 import { Dimensions } from "react-native";
+import theme from "../components/theme";
 
 const height = Dimensions.get("window").height;
 
 const Title = styled(Text)`
   color: white;
   font-size: 15;
-  margin: 100px 0 3px 10px;
+  margin: 0 0 20px 10px;
+  font-family: ${theme.fontFamily.regular};
 `;
 const Box = styled(View)`
-height:${height};
+flex:1;
 background: #222;
 display:flex;
 flex-direction:column;

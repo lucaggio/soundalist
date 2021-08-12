@@ -2,6 +2,7 @@ import React from "react";
 import { StyleSheet } from "react-native";
 import styled from "styled-components";
 import { View, Text, ImageBackground } from "react-native";
+import theme from "./theme";
 
 const Card = styled(View)`
   display: flex;
@@ -20,6 +21,7 @@ const Box = styled(View)`
 const CardContent = styled(Text)`
   color: #fff;
   font-size: 50;
+  font-family: "${theme.fontFamily.title}";
 `;
 
 interface IProps {
