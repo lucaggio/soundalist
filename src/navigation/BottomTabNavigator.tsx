@@ -17,6 +17,8 @@ import {
   TabOneParamList,
   TabTwoParamList,
 } from "../../types";
+import GenreScreen from "../screens/GenreScreen";
+import FavouritList from "../screens/FavouritListScreen";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -69,7 +71,7 @@ function TabOneNavigator() {
     <TabOneStack.Navigator>
       <TabOneStack.Screen
         name="HomeScreen"
-        component={TabOneScreen}
+        component={GenreScreen}
         options={{ headerTitle: "Home" }}
       />
     </TabOneStack.Navigator>
@@ -83,7 +85,7 @@ function TabTwoNavigator() {
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
         name="YourListScreen"
-        component={TabTwoScreen}
+        component={FavouritList}
         options={{ headerTitle: "Preferiti" }}
       />
     </TabTwoStack.Navigator>

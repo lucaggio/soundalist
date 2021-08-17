@@ -19,7 +19,7 @@ flex-direction:column;
 justify-content:center;
 padding-top 50px;
 `;
-const GenreScreen = () => {
+const FavouritList = () => {
   return (
     <Box>
       <Title>Cosa vuoi ascoltare oggi? </Title>
@@ -39,4 +39,4 @@ const GenreScreen = () => {
   );
 };
 
-export default GenreScreen;
+export default FavouritList;
