@@ -20,9 +20,17 @@ const Box = styled(View)`
 
 const CardContent = styled(Text)`
   color: #fff;
-  font-size: 50;
-  font-family: "${theme.fontFamily.title}";
+  font-size: ${(props) => props.theme.size};
+  text-align: center;
+  font-family: ${(props) => props.theme.font};
 `;
+
+CardContent.defaultProps = {
+  theme: {
+    font: `${theme.fontFamily.regular}`,
+    size: 50,
+  },
+};
 
 interface IProps {
   text: string;

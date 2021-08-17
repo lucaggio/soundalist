@@ -25,15 +25,15 @@ const GenreScreen = () => {
       <Title>Cosa vuoi ascoltare oggi? </Title>
       <CardBox
         image={require("../assets/images/techno.jpg")}
-        text="TECHNO"
+        text="List"
       ></CardBox>
       <CardBox
         image={require("../assets/images/house.jpg")}
-        text="HOUSE"
+        text="List"
       ></CardBox>
       <CardBox
         image={require("../assets/images/ambient.jpg")}
-        text="AMBIENT"
+        text="List"
       ></CardBox>
     </Box>
   );

@@ -7,7 +7,16 @@ import { SafeAreaProvider } from "react-native-safe-area-context";
 import useCachedResources from "./src/hooks/useCachedResources";
 import useColorScheme from "./src/hooks/useColorScheme";
 import Navigation from "./src/navigation";
+
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+
 import GenreScreen from "./src/screens/GenreScreen";
+import TechnoScreen from "./src/screens/TechnoScreen";
+import HouseScreen from "./src/screens/HouseScreen";
+import AmbientScreen from "./src/screens/AmbientScreen";
+
+const Stack = createStackNavigator();
 
 export default function App() {
   const [appReady, setAppReady] = useState(false);
@@ -33,11 +42,22 @@ export default function App() {
     return null;
   } else {
     return (
-      // <SafeAreaProvider>
-      //   <Navigation colorScheme={colorScheme} />
-      //   <StatusBar />
-      // </SafeAreaProvider>
-      <GenreScreen />
+      <SafeAreaProvider>
+        <Navigation colorScheme={colorScheme} />
+        <StatusBar />
+      </SafeAreaProvider>
+
+      // <GenreScreen />
+      // <TechnoScreen />
+      // <HouseScreen />
+      // <AmbientScreen />
+
+      // <NavigationContainer>
+      //   <Stack.Navigator>
+      //     <Stack.Screen name="Home" component={GenreScreen} />
+      //     <Stack.Screen name="Techno" component={TechnoScreen} />
+      //   </Stack.Navigator>
+      // </NavigationContainer>
     );
   }
 }
