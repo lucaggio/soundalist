@@ -17,36 +17,43 @@ const AmbientScreen = () => {
       <ScrollView>
         <ArtistTitle>TECHNO</ArtistTitle>
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/ambient/carbon.jpg")}
           text="Carbon Based Lifeforms"
         ></CardBox>
 
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/ambient/solar.jpg")}
           text="Solar Fields"
         ></CardBox>
 
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/ambient/kiasmos.jpg")}
           text="Kiasmos"
         ></CardBox>
 
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/ambient/nicolas.jpg")}
           text="Nicolas Jaar"
         ></CardBox>
 
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/ambient/max.jpg")}
           text="Max Cooper"
         ></CardBox>
 
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/ambient/aparde.jpg")}
           text="Aparde"
         ></CardBox>
 
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/ambient/teebs.jpg")}
           text="Teebs"
         ></CardBox>

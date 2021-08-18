@@ -24,36 +24,43 @@ const TechnoScreen = () => {
       <ScrollView>
         <ArtistTitle>TECHNO</ArtistTitle>
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/techno/amelie.jpg")}
           text="Amelie Lens"
         ></CardBox>
 
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/techno/nina.jpg")}
           text="Nina Kraviz"
         ></CardBox>
 
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/techno/hawtin.jpg")}
           text="Richie Hawtin"
         ></CardBox>
 
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/techno/charlotte.jpg")}
           text="Charlotte De Whitte"
         ></CardBox>
 
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/techno/paganini.jpg")}
           text="Sam Paganini"
         ></CardBox>
 
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/techno/carola.jpg")}
           text="MarcoCarola"
         ></CardBox>
 
         <CardBox
+          navigate="TechnoScreen"
           image={require("../assets/images/techno/paul.jpg")}
           text="Paul Kalkbrenner"
         ></CardBox>

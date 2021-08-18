@@ -15,6 +15,9 @@ export type BottomTabParamList = {
 
 export type TabOneParamList = {
   HomeScreen: undefined;
+  TechnoScreen: undefined;
+  HouseScreen: undefined;
+  AmbientScreen: undefined;
 };
 
 export type TabTwoParamList = {

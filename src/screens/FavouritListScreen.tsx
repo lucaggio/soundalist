@@ -24,14 +24,17 @@ const FavouritList = () => {
     <Box>
       <Title>Cosa vuoi ascoltare oggi? </Title>
       <CardBox
+        navigate="TechnoScreen"
         image={require("../assets/images/techno.jpg")}
         text="List"
       ></CardBox>
       <CardBox
+        navigate="TechnoScreen"
         image={require("../assets/images/house.jpg")}
         text="List"
       ></CardBox>
       <CardBox
+        navigate="TechnoScreen"
         image={require("../assets/images/ambient.jpg")}
         text="List"
       ></CardBox>

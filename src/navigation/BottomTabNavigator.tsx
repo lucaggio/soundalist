@@ -19,6 +19,9 @@ import {
 } from "../../types";
 import GenreScreen from "../screens/GenreScreen";
 import FavouritList from "../screens/FavouritListScreen";
+import TechnoScreen from "../screens/TechnoScreen";
+import HouseScreen from "../screens/HouseScreen";
+import AmbientScreen from "../screens/AmbientScreen";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -73,6 +76,24 @@ function TabOneNavigator() {
         name="HomeScreen"
         component={GenreScreen}
         options={{ headerTitle: "Home" }}
+      />
+
+      <TabOneStack.Screen
+        name="TechnoScreen"
+        component={TechnoScreen}
+        options={{ headerTitle: "Techno" }}
+      />
+
+      <TabOneStack.Screen
+        name="HouseScreen"
+        component={HouseScreen}
+        options={{ headerTitle: "House" }}
+      />
+
+      <TabOneStack.Screen
+        name="AmbientScreen"
+        component={AmbientScreen}
+        options={{ headerTitle: "Ambient" }}
       />
     </TabOneStack.Navigator>
   );

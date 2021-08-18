@@ -1,7 +1,13 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import styled from "styled-components";
-import { View, Text, ImageBackground } from "react-native";
+import {
+  View,
+  Text,
+  ImageBackground,
+  TouchableWithoutFeedback,
+} from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import theme from "./theme";
 
 const Card = styled(View)`
@@ -33,24 +39,31 @@ CardContent.defaultProps = {
 };
 
 interface IProps {
+  navigate: string;
   text: string;
   image: any;
 }
 
 const CardBox = (props: IProps) => {
+  const navigation = useNavigation();
+  const onPress = () => {
+    navigation.navigate(`${props.navigate}`);
+  };
   return (
-    <Card>
-      <ImageBackground
-        source={props.image}
-        resizeMode="cover"
-        imageStyle={{ borderRadius: 10 }}
-        style={styles.container}
-      >
-        <Box>
-          <CardContent>{props.text}</CardContent>
-        </Box>
-      </ImageBackground>
-    </Card>
+    <TouchableWithoutFeedback onPress={onPress}>
+      <Card>
+        <ImageBackground
+          source={props.image}
+          resizeMode="cover"
+          imageStyle={{ borderRadius: 10 }}
+          style={styles.container}
+        >
+          <Box>
+            <CardContent>{props.text}</CardContent>
+          </Box>
+        </ImageBackground>
+      </Card>
+    </TouchableWithoutFeedback>
   );
 };
 

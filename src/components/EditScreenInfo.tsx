@@ -47,6 +47,7 @@ export default function EditScreenInfo({ path }: { path: string }) {
         </TouchableOpacity>
       </View>
       <CardBox
+        navigate="TechnoScreen"
         image={require("../assets/images/techno.jpg")}
         text="TECHNO"
       ></CardBox>
