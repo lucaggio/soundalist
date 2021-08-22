@@ -22,6 +22,7 @@ import FavouritList from "../screens/FavouritListScreen";
 import TechnoScreen from "../screens/TechnoScreen";
 import HouseScreen from "../screens/HouseScreen";
 import AmbientScreen from "../screens/AmbientScreen";
+import SingleArtistScreen from "../screens/SingleArtistScreen";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -94,6 +95,11 @@ function TabOneNavigator() {
         name="AmbientScreen"
         component={AmbientScreen}
         options={{ headerTitle: "Ambient" }}
+      />
+      <TabOneStack.Screen
+        name="SingleArtistScreen"
+        component={SingleArtistScreen}
+        options={{ headerTitle: "SingleArtistScreen" }}
       />
     </TabOneStack.Navigator>
   );

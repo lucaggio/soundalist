@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 import styled from "styled-components";
+import { Artist } from "../../types";
 import {
   View,
   Text,
@@ -33,41 +34,42 @@ const CardContent = styled(Text)`
 
 CardContent.defaultProps = {
   theme: {
-    font: `${theme.fontFamily.title}`,
+    font: `${theme.fontFamily.regular}`,
     size: 50,
   },
 };
 
-interface IProps {
-  navigate: string;
-  text: string;
-  image: any;
+interface ArtistsProps {
+  artist: Artist;
 }
 
-const CardBox = (props: IProps) => {
-  const navigation = useNavigation();
-  const onPress = () => {
-    navigation.navigate(`${props.navigate}`);
-  };
+const CardArtist = (props: ArtistsProps) => {
+
+  const navigation = useNavigation()
+
+  const onPress = () =>{
+    navigation.navigate('SingleArtistScreen', {id: props.artist.id})
+  }
+
   return (
     <TouchableWithoutFeedback onPress={onPress}>
-      <Card>
-        <ImageBackground
-          source={props.image}
-          resizeMode="cover"
-          imageStyle={{ borderRadius: 10 }}
-          style={styles.container}
-        >
-          <Box>
-            <CardContent>{props.text}</CardContent>
-          </Box>
-        </ImageBackground>
-      </Card>
+    <Card>    
+      <ImageBackground
+        source={{ uri: props.artist.image }}
+        resizeMode="cover"
+        imageStyle={{ borderRadius: 10 }}
+        style={styles.container}
+      >
+        <Box>
+          <CardContent>{props.artist.name}</CardContent>
+        </Box>
+      </ImageBackground>      
+    </Card>
     </TouchableWithoutFeedback>
   );
 };
 
-export default CardBox;
+export default CardArtist;
 
 const styles = StyleSheet.create({
   container: {

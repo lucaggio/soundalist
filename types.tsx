@@ -18,8 +18,22 @@ export type TabOneParamList = {
   TechnoScreen: undefined;
   HouseScreen: undefined;
   AmbientScreen: undefined;
+  SingleArtistScreen: undefined;
 };
 
 export type TabTwoParamList = {
   YourListScreen: undefined;
+};
+
+export type Song = {
+  id: string;
+  image: string;
+  genre: string;
+  artist: string;
+};
+
+export type Artist = {
+  id: string;
+  name: string;
+  image: any;
 };
