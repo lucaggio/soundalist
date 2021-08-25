@@ -40,6 +40,7 @@ const GenreScreen = () => {
         image={require("../assets/images/house.jpg")}
         text="HOUSE"
       ></CardBox>
+
       <CardBox
         navigate="AmbientScreen"
         image={require("../assets/images/ambient.jpg")}
