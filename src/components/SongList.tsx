@@ -8,7 +8,7 @@ const Box = styled(View)`
   flex-direction: row
   padding: 5px 0 5px 10px
   margin: 1px 0;
-  background: ${theme.colors.black}
+  background: ${theme.colors.black}ef
 `;
 const ColumnBox = styled(View)`
   flex-direction: column

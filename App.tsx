@@ -15,6 +15,7 @@ import GenreScreen from "./src/screens/GenreScreen";
 import TechnoScreen from "./src/screens/TechnoScreen";
 import HouseScreen from "./src/screens/HouseScreen";
 import AmbientScreen from "./src/screens/AmbientScreen";
+import PlayerWidget from "./src/components/PlayerWidget";
 
 const Stack = createStackNavigator();
 
@@ -36,15 +37,16 @@ export default function App() {
     })();
   }, []);
   const isLoadingComplete = useCachedResources();
-  const colorScheme = useColorScheme();
+  // const colorScheme = useColorScheme();
 
   if (!isLoadingComplete) {
     return null;
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={colorScheme} />
+        <Navigation colorScheme={"dark"} />
         <StatusBar />
+        <PlayerWidget />
       </SafeAreaProvider>
 
       // <GenreScreen />

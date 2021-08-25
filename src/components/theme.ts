@@ -8,8 +8,8 @@ const theme = {
   },
 
   colors: {
-    white: "#fff",
-    black: "#222",
+    white: "#ffffff",
+    black: "#222222",
     green: "#80FF00",
     pink: "#FF00D6",
     blue: "#0029FF",

@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
 
-import { Entypo, Ionicons } from "@expo/vector-icons";
+import { Entypo, AntDesign } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
@@ -53,9 +53,9 @@ export default function BottomTabNavigator() {
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <Entypo
-              name="heart-outlined"
-              size={30}
+            <AntDesign
+              name="hearto"
+              size={24}
               style={{ marginBottom: -3 }}
               color={color}
             />
