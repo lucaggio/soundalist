@@ -9,12 +9,19 @@ import { Audio } from "expo-av";
 import { Sound } from "expo-av/build/Audio/Sound";
 
 const Box = styled(View)`
-position:absolute
-bottom:49
-  flex-direction: row
-  padding: 5px 0 5px 10px
+  position:absolute
+  bottom:49
   width:100%
   background: ${theme.colors.black}fc
+`;
+const ProgressBar = styled(View)`
+  height:2
+  background: ${theme.colors.white}
+`;
+
+const RowBox = styled(View)`
+  padding: 5px 0 5px 10px
+  flex-direction: row;
 `;
 
 const RoundImage = styled(ImageBackground)`
@@ -39,20 +46,20 @@ const ColumnBox = styled(View)`
   overflow:hidden
 `;
 const Title = styled(Text)`
-font-size:14
-font-family: ${theme.fontFamily.regular}
-color:${theme.colors.white}
+  font-size:14
+  font-family: ${theme.fontFamily.regular}
+  color:${theme.colors.white}
 `;
 const Artist = styled(Text)`
-font-family: ${theme.fontFamily.medium}
-font-size:15
-color:${theme.colors.white}
+  font-family: ${theme.fontFamily.medium}
+  font-size:15
+  color:${theme.colors.white}
 `;
 
 const IconBox = styled(View)`
-margin-right:25
-justify-content:center
-align-items:center
+  margin-right:25
+  justify-content:center
+  align-items:center
 `;
 
 const song = {
@@ -67,9 +74,13 @@ const song = {
 const PlayerWidget = () => {
   const [sound, setSound] = useState<Sound | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
+  const [duration, setDuration] = useState<number | null>(null);
+  const [position, setPosition] = useState<number | null>(null);
 
   const onPlaybackStatusUpdate = (status) => {
     setIsPlaying(status.isPlaying);
+    setDuration(status.durationMillis);
+    setPosition(status.positionMillis);
     console.log(status);
   };
 
@@ -101,32 +112,45 @@ const PlayerWidget = () => {
     }
   };
 
+  const getProgress = () => {
+    if (sound === null || duration === null || position === null) {
+      return 0;
+    }
+    return (position / duration) * 100;
+  };
+
   return (
     <Box>
-      <RoundImage
-        imageStyle={{ borderRadius: 100 }}
-        source={{ uri: song.image }}
-      >
-        <TouchableOpacity onPress={onPlayPausePress}>
-          <FontAwesome
-            name={isPlaying ? "pause" : "play"}
-            size={30}
-            color={theme.colors.white}
-          />
-        </TouchableOpacity>
-      </RoundImage>
+      <ProgressBar style={{ width: `${getProgress()}%` }} />
+      <RowBox>
+        <RoundImage
+          imageStyle={{ borderRadius: 100 }}
+          source={{ uri: song.image }}
+        >
+          <TouchableOpacity onPress={onPlayPausePress}>
+            <FontAwesome
+              name={isPlaying ? "pause" : "play"}
+              size={30}
+              color={theme.colors.white}
+            />
+          </TouchableOpacity>
+        </RoundImage>
 
-      <RightBox>
-        <ColumnBox>
-          <RollingText durationMsPerWidth={15}>
-            <Artist>{song.artist}</Artist>
-          </RollingText>
-          <Title>{song.genre}</Title>
-        </ColumnBox>
-        <IconBox>
-          <AntDesign name="hearto" size={24} color={theme.colors.white} />
-        </IconBox>
-      </RightBox>
+        <RightBox>
+          <ColumnBox>
+            <RollingText durationMsPerWidth={15}>
+              <Artist>{song.artist}</Artist>
+            </RollingText>
+            <Title>
+              {getProgress()}
+              {song.genre}
+            </Title>
+          </ColumnBox>
+          <IconBox>
+            <AntDesign name="hearto" size={24} color={theme.colors.white} />
+          </IconBox>
+        </RightBox>
+      </RowBox>
     </Box>
   );
 };
