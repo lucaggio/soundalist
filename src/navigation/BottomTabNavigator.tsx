@@ -3,7 +3,7 @@
  * https://reactnavigation.org/docs/bottom-tab-navigator
  */
 
-import { Ionicons } from "@expo/vector-icons";
+import { Entypo, AntDesign } from "@expo/vector-icons";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
@@ -17,6 +17,12 @@ import {
   TabOneParamList,
   TabTwoParamList,
 } from "../../types";
+import GenreScreen from "../screens/GenreScreen";
+import FavouritList from "../screens/FavouritListScreen";
+import TechnoScreen from "../screens/TechnoScreen";
+import HouseScreen from "../screens/HouseScreen";
+import AmbientScreen from "../screens/AmbientScreen";
+import SingleArtistScreen from "../screens/SingleArtistScreen";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
@@ -25,38 +31,39 @@ export default function BottomTabNavigator() {
 
   return (
     <BottomTab.Navigator
-      initialRouteName="TabOne"
+      initialRouteName="Home"
       tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
     >
       <BottomTab.Screen
-        name="TabOne"
+        name="Home"
         component={TabOneNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
+            <Entypo
+              name="home"
+              size={30}
+              style={{ marginBottom: -3 }}
+              color={color}
+            />
           ),
         }}
       />
       <BottomTab.Screen
-        name="TabTwo"
+        name="Preferiti"
         component={TabTwoNavigator}
         options={{
           tabBarIcon: ({ color }) => (
-            <TabBarIcon name="ios-code" color={color} />
+            <AntDesign
+              name="hearto"
+              size={24}
+              style={{ marginBottom: -3 }}
+              color={color}
+            />
           ),
         }}
       />
     </BottomTab.Navigator>
   );
-}
-
-// You can explore the built-in icon families and icons on the web at:
-// https://icons.expo.fyi/
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof Ionicons>["name"];
-  color: string;
-}) {
-  return <Ionicons size={30} style={{ marginBottom: -3 }} {...props} />;
 }
 
 // Each tab has its own navigation stack, you can read more about this pattern here:
@@ -67,9 +74,32 @@ function TabOneNavigator() {
   return (
     <TabOneStack.Navigator>
       <TabOneStack.Screen
-        name="TabOneScreen"
-        component={TabOneScreen}
-        options={{ headerTitle: "Tab One Title" }}
+        name="HomeScreen"
+        component={GenreScreen}
+        options={{ headerTitle: "Home" }}
+      />
+
+      <TabOneStack.Screen
+        name="TechnoScreen"
+        component={TechnoScreen}
+        options={{ headerTitle: "Techno" }}
+      />
+
+      <TabOneStack.Screen
+        name="HouseScreen"
+        component={HouseScreen}
+        options={{ headerTitle: "House" }}
+      />
+
+      <TabOneStack.Screen
+        name="AmbientScreen"
+        component={AmbientScreen}
+        options={{ headerTitle: "Ambient" }}
+      />
+      <TabOneStack.Screen
+        name="SingleArtistScreen"
+        component={SingleArtistScreen}
+        options={{ headerTitle: "SingleArtistScreen" }}
       />
     </TabOneStack.Navigator>
   );
@@ -81,9 +111,9 @@ function TabTwoNavigator() {
   return (
     <TabTwoStack.Navigator>
       <TabTwoStack.Screen
-        name="TabTwoScreen"
-        component={TabTwoScreen}
-        options={{ headerTitle: "Tab Two Title" }}
+        name="YourListScreen"
+        component={FavouritList}
+        options={{ headerTitle: "Preferiti" }}
       />
     </TabTwoStack.Navigator>
   );

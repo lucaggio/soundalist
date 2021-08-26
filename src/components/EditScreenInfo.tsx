@@ -6,6 +6,8 @@ import Colors from "../constants/Colors";
 import { MonoText } from "./StyledText";
 import { Text, View } from "./Themed";
 
+import CardBox from "./CardBox";
+
 export default function EditScreenInfo({ path }: { path: string }) {
   return (
     <View>
@@ -44,6 +46,11 @@ export default function EditScreenInfo({ path }: { path: string }) {
           </Text>
         </TouchableOpacity>
       </View>
+      <CardBox
+        navigate="TechnoScreen"
+        image={require("../assets/images/techno.jpg")}
+        text="TECHNO"
+      ></CardBox>
     </View>
   );
 }
