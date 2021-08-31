@@ -23,4 +23,5 @@ amplify-gradle-config.json
 amplifytools.xcconfig
 .secret-*
 zText
+amplifydata.json
 #amplify-do-not-edit-end
