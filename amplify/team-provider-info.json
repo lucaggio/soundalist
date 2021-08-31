@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-soundalist-dev-181414-authRole",
+      "UnauthRoleArn": "arn:aws:iam::863978670412:role/amplify-soundalist-dev-181414-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::863978670412:role/amplify-soundalist-dev-181414-authRole",
+      "Region": "eu-central-1",
+      "DeploymentBucketName": "amplify-soundalist-dev-181414-deployment",
+      "UnauthRoleName": "amplify-soundalist-dev-181414-unauthRole",
+      "StackName": "amplify-soundalist-dev-181414",
+      "StackId": "arn:aws:cloudformation:eu-central-1:863978670412:stack/amplify-soundalist-dev-181414/aa5eef30-0688-11ec-85e7-029d235f25b0",
+      "AmplifyAppId": "d1fopvt9ygtb53"
+    }
+  }
+}

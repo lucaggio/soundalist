@@ -29,7 +29,7 @@ export type Song = {
   id: string;
   image: string;
   genre: string;
-  artist: string;
+  creator: string;
 };
 
 export type Artist = {

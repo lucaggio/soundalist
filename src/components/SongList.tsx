@@ -43,7 +43,7 @@ const SongList = (props: SongListProps) => {
       <RoundImage source={{ uri: song.image }}></RoundImage>
       <ColumnBox>
         <Title>{song.genre}</Title>
-        <Artist>{song.artist}</Artist>
+        <Artist>{song.creator}</Artist>
       </ColumnBox>
     </Box>
   );

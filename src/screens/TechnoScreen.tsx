@@ -19,6 +19,7 @@ flex:1;
 background:${theme.colors.black};
 padding-top 50px;
 `;
+
 const artistCategory = {
   id: "1",
   title: "TECHNO",
@@ -26,38 +27,37 @@ const artistCategory = {
     {
       id: "1",
       name: "Amelie Lens",
-      image:
-        "https://media.resources.festicket.com/image/300x300/center/top/filters:quality(70)/www/artists/AmelieLens_New.jpg",
+      image: "https://i.ibb.co/FVK1Txb/amelie.jpg",
     },
     {
       id: "2",
       name: "Nina Kraviz",
-      image: "../assets/images/techno/nina.jpg",
+      image: "https://i.ibb.co/SXCSDwT/nina.jpg",
     },
     {
       id: "3",
       name: "Richie Hawtin",
-      image: "../assets/images/techno/hawtin.jpg",
+      image: "https://i.ibb.co/Sm7cXgm/hawtin.jpg",
     },
     {
       id: "4",
       name: "Charlotte De White",
-      image: "../assets/images/techno/charlotte.jpg",
+      image: "https://i.ibb.co/Gv525bM/charlotte.jpg",
     },
     {
       id: "5",
       name: "Sam Paganini",
-      image: "../assets/images/techno/paganini.jpg",
+      image: "https://i.ibb.co/m5vLWQR/paganini.jpg",
     },
     {
       id: "6",
       name: "Marco Carola",
-      image: "../assets/images/techno/carola.jpg",
+      image: "https://i.ibb.co/wYScgG7/carola.jpg",
     },
     {
       id: "7",
       name: "Paul Kalkbrenner",
-      image: "../assets/images/techno/paul.jpg",
+      image: "https://i.ibb.co/hDrsXjR/paul.jpg",
     },
   ],
 };

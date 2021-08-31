@@ -64,11 +64,11 @@ const IconBox = styled(View)`
 
 const song = {
   id: "1",
-  uri: "http://educational.utego.it/wp-content/uploads/2021/04/consumatori_570.mp3",
+  uri: "https://soundalistdata.s3.eu-central-1.amazonaws.com/techno/sounds/amelie/Airod+%26+Amelie+Lens+-+Adrenaline.mp3",
   image:
-    "https://media.resources.festicket.com/image/300x300/center/top/filters:quality(70)/www/artists/AmelieLens_New.jpg",
+    "https://soundalistdata.s3.eu-central-1.amazonaws.com/techno/images/amelie.jpg",
   genre: "Techno",
-  artist: "In Silence - Amelie Lens",
+  creator: "In Silence - Amelie Lens",
 };
 
 const PlayerWidget = () => {
@@ -139,7 +139,7 @@ const PlayerWidget = () => {
         <RightBox>
           <ColumnBox>
             <RollingText durationMsPerWidth={15}>
-              <Artist>{song.artist}</Artist>
+              <Artist>{song.creator}</Artist>
             </RollingText>
             <Title>
               {getProgress()}

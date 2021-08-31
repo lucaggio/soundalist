@@ -17,6 +17,10 @@ import HouseScreen from "./src/screens/HouseScreen";
 import AmbientScreen from "./src/screens/AmbientScreen";
 import PlayerWidget from "./src/components/PlayerWidget";
 
+import Amplify from "aws-amplify";
+import config from "./src/aws-exports";
+Amplify.configure(config);
+
 const Stack = createStackNavigator();
 
 export default function App() {
