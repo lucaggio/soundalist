@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import { View, FlatList } from "react-native";
+import { View, Text, FlatList } from "react-native";
 import artist from "../data/artist";
 import SongList from "../components/SongList";
 import { useRoute } from "@react-navigation/native";
@@ -8,8 +8,11 @@ import { useEffect } from "react";
 import SongListHeader from "../components/SongListHeader";
 import theme from "../components/theme";
 
+import { API, graphqlOperation } from "aws-amplify";
+import { getArtist } from "../graphql/queries";
+
 const Box = styled(View)`
-  background: ${theme.colors.white};
+  background: ${theme.colors.black};
 `;
 
 const singleArtist = {
@@ -18,24 +21,43 @@ const singleArtist = {
 
 const SingleArtistScreen = () => {
   const route = useRoute();
+  const artistId = route.params.id;
+
+  const [artist, setArtist] = useState(null);
+
   useEffect(() => {
-    console.log(route);
+    const fetchArtistDetails = async () => {
+      try {
+        const data = await API.graphql(
+          graphqlOperation(getArtist, { id: artistId })
+        );
+        setArtist(data.data.getArtist);
+        console.log(artist);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    fetchArtistDetails();
   }, []);
   // const count = route.params.id;
 
-  const { artist } = singleArtist;
+  // const { artist } = singleArtist;
 
-  return (
-    <Box>
-      <FlatList
-        data={artist.songs}
-        renderItem={({ item }) => <SongList song={item} />}
-        keyExtractor={(item) => item.id}
-        showsVerticalScrollIndicator={false}
-        ListHeaderComponent={() => <SongListHeader artist={artist} />}
-      />
-    </Box>
-  );
+  if (!artist) {
+    return <Text> Loading...</Text>;
+  } else {
+    return (
+      <Box>
+        <FlatList
+          data={artist.songs.items}
+          renderItem={({ item }) => <SongList song={item} />}
+          keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
+          ListHeaderComponent={() => <SongListHeader artist={artist} />}
+        />
+      </Box>
+    );
+  }
 };
 
 export default SingleArtistScreen;

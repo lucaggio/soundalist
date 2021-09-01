@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import theme from "./theme";
 import { Text, ImageBackground, View, TouchableOpacity } from "react-native";
 import styled from "styled-components";
@@ -7,6 +7,10 @@ import RollingText from "react-native-rolling-text";
 import { Entypo, AntDesign, FontAwesome } from "@expo/vector-icons";
 import { Audio } from "expo-av";
 import { Sound } from "expo-av/build/Audio/Sound";
+
+import { AppContext } from "../../appContext";
+import { API, graphqlOperation } from "aws-amplify";
+import { getSong } from "../graphql/queries";
 
 const Box = styled(View)`
   position:absolute
@@ -72,10 +76,29 @@ const song = {
 };
 
 const PlayerWidget = () => {
+  const [song, setSong] = useState(null);
   const [sound, setSound] = useState<Sound | null>(null);
   const [isPlaying, setIsPlaying] = useState<boolean>(true);
   const [duration, setDuration] = useState<number | null>(null);
   const [position, setPosition] = useState<number | null>(null);
+
+  const { songId } = useContext(AppContext);
+
+  useEffect(() => {
+    const fetchSong = async () => {
+      try {
+        const data = await API.graphql(
+          graphqlOperation(getSong, { id: songId })
+        );
+        console.log(data);
+        setSong(data.data.getSong);
+      } catch (e) {
+        console.log(e);
+      }
+    };
+
+    fetchSong();
+  }, [songId]);
 
   const onPlaybackStatusUpdate = (status) => {
     setIsPlaying(status.isPlaying);
@@ -98,8 +121,10 @@ const PlayerWidget = () => {
   };
 
   useEffect(() => {
-    playCurrentSong();
-  }, []);
+    if (song) {
+      playCurrentSong();
+    }
+  }, [song]);
 
   const onPlayPausePress = async () => {
     if (!sound) {
@@ -119,40 +144,43 @@ const PlayerWidget = () => {
     return (position / duration) * 100;
   };
 
-  return (
-    <Box>
-      <ProgressBar style={{ width: `${getProgress()}%` }} />
-      <RowBox>
-        <RoundImage
-          imageStyle={{ borderRadius: 100 }}
-          source={{ uri: song.image }}
-        >
-          <TouchableOpacity onPress={onPlayPausePress}>
-            <FontAwesome
-              name={isPlaying ? "pause" : "play"}
-              size={30}
-              color={theme.colors.white}
-            />
-          </TouchableOpacity>
-        </RoundImage>
+  if (!song) {
+    return null;
+  }
+  if (song) {
+    return (
+      <Box>
+        <ProgressBar style={{ width: `${getProgress()}%` }} />
+        <RowBox>
+          <RoundImage
+            imageStyle={{ borderRadius: 100 }}
+            source={{ uri: song.image }}
+          >
+            <TouchableOpacity onPress={onPlayPausePress}>
+              <FontAwesome
+                name={isPlaying ? "pause" : "play"}
+                size={30}
+                color={theme.colors.white}
+              />
+            </TouchableOpacity>
+          </RoundImage>
 
-        <RightBox>
-          <ColumnBox>
-            <RollingText durationMsPerWidth={15}>
-              <Artist>{song.creator}</Artist>
-            </RollingText>
-            <Title>
-              {getProgress()}
-              {song.genre}
-            </Title>
-          </ColumnBox>
-          <IconBox>
-            <AntDesign name="hearto" size={24} color={theme.colors.white} />
-          </IconBox>
-        </RightBox>
-      </RowBox>
-    </Box>
-  );
+          <RightBox>
+            <ColumnBox>
+              <RollingText durationMsPerWidth={15}>
+                <Artist>{song.creator}</Artist>
+              </RollingText>
+              <Title>{song.genre}</Title>
+            </ColumnBox>
+            <IconBox>
+              <AntDesign name="hearto" size={24} color={theme.colors.white} />
+            </IconBox>
+          </RightBox>
+        </RowBox>
+      </Box>
+    );
+  }
+  return null;
 };
 
 export default PlayerWidget;

@@ -17,6 +17,8 @@ import HouseScreen from "./src/screens/HouseScreen";
 import AmbientScreen from "./src/screens/AmbientScreen";
 import PlayerWidget from "./src/components/PlayerWidget";
 
+import { AppContext } from "./appContext";
+
 import Amplify from "aws-amplify";
 import config from "./src/aws-exports";
 Amplify.configure(config);
@@ -43,14 +45,23 @@ export default function App() {
   const isLoadingComplete = useCachedResources();
   // const colorScheme = useColorScheme();
 
+  const [songId, setSongId] = useState<string | null>(null);
+
   if (!isLoadingComplete) {
     return null;
   } else {
     return (
       <SafeAreaProvider>
-        <Navigation colorScheme={"dark"} />
-        <StatusBar />
-        <PlayerWidget />
+        <AppContext.Provider
+          value={{
+            songId,
+            setSongId: (id: string) => setSongId(id),
+          }}
+        >
+          <Navigation colorScheme={"dark"} />
+          <StatusBar />
+          <PlayerWidget />
+        </AppContext.Provider>
       </SafeAreaProvider>
 
       // <GenreScreen />

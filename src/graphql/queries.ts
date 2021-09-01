@@ -39,6 +39,11 @@ export const listArtistCategories = /* GraphQL */ `
         title
         artist {
           nextToken
+          items {
+            id
+            name
+            image
+          }
         }
         createdAt
         updatedAt
