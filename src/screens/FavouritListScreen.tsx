@@ -1,15 +1,18 @@
 import React from "react";
 import styled from "styled-components";
 import CardBox from "../components/CardBox";
-import { Text, View } from "react-native";
+import { FlatList, Text, View } from "react-native";
 import { Dimensions } from "react-native";
 import theme from "../components/theme";
+import artist from "../data/artist";
+import SongList from "../components/SongList";
 
 const Title = styled(Text)`
   color: ${theme.colors.white};
-  font-size: 15;
-  margin: 0 0 20px 10px;
-  font-family: ${theme.fontFamily.regular};
+  font-size: 25;
+  margin: 10px 0 10px 0px;
+  font-family: ${theme.fontFamily.medium};
+  text-align: center;
 `;
 const Box = styled(View)`
 flex:1;
@@ -22,22 +25,13 @@ padding-top 50px;
 const FavouritList = () => {
   return (
     <Box>
-      <Title>Cosa vuoi ascoltare oggi? </Title>
-      <CardBox
-        navigate="TechnoScreen"
-        image={require("../assets/images/techno.jpg")}
-        text="List"
-      ></CardBox>
-      <CardBox
-        navigate="TechnoScreen"
-        image={require("../assets/images/house.jpg")}
-        text="List"
-      ></CardBox>
-      <CardBox
-        navigate="TechnoScreen"
-        image={require("../assets/images/ambient.jpg")}
-        text="List"
-      ></CardBox>
+      <FlatList
+        data={artist}
+        renderItem={({ item }) => <SongList song={item} />}
+        keyExtractor={(item) => item.id}
+        showsVerticalScrollIndicator={false}
+        ListHeaderComponent={<Title>Brani Preferiti</Title>}
+      />
     </Box>
   );
 };

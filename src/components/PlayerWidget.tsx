@@ -14,7 +14,7 @@ import { getSong } from "../graphql/queries";
 
 const Box = styled(View)`
   position:absolute
-  bottom:49
+  bottom:54
   width:100%
   background: ${theme.colors.black}fc
 `;
@@ -24,13 +24,13 @@ const ProgressBar = styled(View)`
 `;
 
 const RowBox = styled(View)`
-  padding: 5px 0 5px 10px
+  padding: 3px 0 3px 10px
   flex-direction: row;
 `;
 
 const RoundImage = styled(ImageBackground)`
-  width: 65
-  height: 65
+  width: 60
+  height: 60
   border-radius: 100
   margin:2px 20px 2px 0;
   justify-content:center

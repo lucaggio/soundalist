@@ -19,8 +19,8 @@ const ColumnBox = styled(View)`
   width:70%
 `;
 const RoundImage = styled(Image)`
-  width: 65
-  height: 65
+  width: 55
+  height: 55
   border-radius: 100
   margin:2px 0;
 `;
@@ -31,7 +31,7 @@ color:${theme.colors.white}
 `;
 const Artist = styled(Text)`
 font-family: ${theme.fontFamily.medium}
-font-size:18
+font-size:15
 color:${theme.colors.white}
 `;
 
