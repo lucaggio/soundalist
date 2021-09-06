@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import theme from "./theme";
+import theme from "./../theme";
 import { Text, View, FlatList } from "react-native";
-import { Artist } from "../../types";
-import CardArtist from "./CardArtist";
+import { Artist } from "../../../types";
+import CardArtist from "./../CardArtist";
 import { StyleSheet } from "react-native";
 
 const Title = styled(Text)`
@@ -17,8 +17,8 @@ const Box = styled(View)`
 padding-top 50px;
 `;
 const ArtistList = styled(FlatList)`
-margin: 10 0;
-`
+  margin: 10 0;
+`;
 
 interface CategoryProps {
   title: string;
@@ -30,7 +30,7 @@ const ArtistCategory = (props: CategoryProps) => {
     <Box>
       <Title>{props.title}</Title>
       <FlatList
-      style={styles.list}
+        style={styles.list}
         data={props.artist}
         renderItem={({ item }) => <CardArtist artist={item} />}
         keyExtractor={(item) => item.id}
@@ -41,10 +41,10 @@ const ArtistCategory = (props: CategoryProps) => {
 };
 
 const styles = StyleSheet.create({
-  list:{
-    marginTop:10,
-    marginBottom:100,
+  list: {
+    marginTop: 10,
+    marginBottom: 100,
   },
-})
+});
 
 export default ArtistCategory;
