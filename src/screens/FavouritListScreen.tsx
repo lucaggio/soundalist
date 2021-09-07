@@ -27,26 +27,22 @@ padding-top 50px;
 `;
 const FavouritList = () => {
   const favourite = useSelector(favouriteSelector);
-  const list = JSON.stringify(favourite);
-  const newList = JSON.parse(list);
-  const newFavourite = newList.favourites;
+  let stringJson = JSON.stringify(favourite);
+  const parseJson = JSON.parse(stringJson);
+  const newList = parseJson.favourites;
+  const newFavourite = newList.reverse();
 
-  if (newFavourite[0] !== undefined) {
+  if (newList[0] !== undefined) {
     return (
-      <>
-        <TouchableWithoutFeedback onPress={() => console.log(newFavourite)}>
-          <Title>FFFFFFFFFFFFFFFFFFFff</Title>
-        </TouchableWithoutFeedback>
-        <Box>
-          <FlatList
-            data={newFavourite}
-            renderItem={({ item }) => <SongList song={item} />}
-            keyExtractor={(item) => item.id}
-            showsVerticalScrollIndicator={false}
-            ListHeaderComponent={<Title>Brani Preferiti</Title>}
-          />
-        </Box>
-      </>
+      <Box>
+        <FlatList
+          data={newFavourite}
+          renderItem={({ item }) => <SongList song={item} />}
+          keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
+          ListHeaderComponent={<Title>Brani Preferiti</Title>}
+        />
+      </Box>
     );
   } else {
     return <Title>Dic funziona</Title>;

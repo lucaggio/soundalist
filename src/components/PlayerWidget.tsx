@@ -151,6 +151,12 @@ const PlayerWidget = () => {
       genre: song.genre,
       creator: song.creator,
     };
+    const list = JSON.stringify(selector);
+    const newList = JSON.parse(list);
+    const favouriteList = newList.favourites.some(
+      (item) => item.id == `${favourite.id}`
+    );
+
     return (
       <Box>
         <ProgressBar style={{ width: `${getProgress()}%` }} />
@@ -177,8 +183,12 @@ const PlayerWidget = () => {
             </ColumnBox>
             <IconBox>
               <AntDesign
-                onPress={() => dispatch(addFavourite(favourite))}
-                name="hearto"
+                onPress={() =>
+                  !favouriteList
+                    ? dispatch(addFavourite(favourite))
+                    : dispatch(removeFavourite(favourite.id))
+                }
+                name={favouriteList ? "heart" : "hearto"}
                 size={24}
                 color={theme.colors.white}
               />
