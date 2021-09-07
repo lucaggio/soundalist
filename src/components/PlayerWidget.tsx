@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useReducer } from "react";
 import theme from "./theme";
 import { Text, ImageBackground, View, TouchableOpacity } from "react-native";
 import styled from "styled-components";
@@ -11,10 +11,13 @@ import { Sound } from "expo-av/build/Audio/Sound";
 import { AppContext } from "../../appContext";
 import { API, graphqlOperation } from "aws-amplify";
 import { getSong } from "../graphql/queries";
+import { useDispatch, useSelector } from "react-redux";
+import { addFavourite, removeFavourite } from "../redux/favouriteActions";
+import { favouriteSelector } from "../redux/favouriteReducer";
 
 const Box = styled(View)`
   position:absolute
-  bottom:54
+  bottom:49
   width:100%
   background: ${theme.colors.black}fc
 `;
@@ -66,15 +69,7 @@ const IconBox = styled(View)`
   align-items:center
 `;
 
-const song = {
-  id: "1",
-  uri: "https://soundalistdata.s3.eu-central-1.amazonaws.com/techno/sounds/amelie/Airod+%26+Amelie+Lens+-+Adrenaline.mp3",
-  image:
-    "https://soundalistdata.s3.eu-central-1.amazonaws.com/techno/images/amelie.jpg",
-  genre: "Techno",
-  creator: "In Silence - Amelie Lens",
-};
-
+//Component
 const PlayerWidget = () => {
   const [song, setSong] = useState(null);
   const [sound, setSound] = useState<Sound | null>(null);
@@ -84,13 +79,15 @@ const PlayerWidget = () => {
 
   const { songId } = useContext(AppContext);
 
+  const dispatch = useDispatch();
+  const selector = useSelector(favouriteSelector);
+
   useEffect(() => {
     const fetchSong = async () => {
       try {
         const data = await API.graphql(
           graphqlOperation(getSong, { id: songId })
         );
-        console.log(data);
         setSong(data.data.getSong);
       } catch (e) {
         console.log(e);
@@ -104,7 +101,6 @@ const PlayerWidget = () => {
     setIsPlaying(status.isPlaying);
     setDuration(status.durationMillis);
     setPosition(status.positionMillis);
-    console.log(status);
   };
 
   const playCurrentSong = async () => {
@@ -148,6 +144,19 @@ const PlayerWidget = () => {
     return null;
   }
   if (song) {
+    const favourite = {
+      id: song.id,
+      uri: song.uri,
+      image: song.image,
+      genre: song.genre,
+      creator: song.creator,
+    };
+    const list = JSON.stringify(selector);
+    const newList = JSON.parse(list);
+    const favouriteList = newList.favourites.some(
+      (item) => item.id == `${favourite.id}`
+    );
+
     return (
       <Box>
         <ProgressBar style={{ width: `${getProgress()}%` }} />
@@ -173,7 +182,17 @@ const PlayerWidget = () => {
               <Title>{song.genre}</Title>
             </ColumnBox>
             <IconBox>
-              <AntDesign name="hearto" size={24} color={theme.colors.white} />
+              <AntDesign
+                onPress={() =>
+                  !favouriteList
+                    ? dispatch(addFavourite(favourite))
+                    : dispatch(removeFavourite(favourite.id))
+                }
+                name={favouriteList ? "heart" : "hearto"}
+                size={24}
+                color={theme.colors.white}
+              />
+              {console.log(selector)}
             </IconBox>
           </RightBox>
         </RowBox>

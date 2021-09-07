@@ -6,6 +6,9 @@ import { Dimensions } from "react-native";
 import theme from "../components/theme";
 import artist from "../data/artist";
 import SongList from "../components/SongList";
+import { useSelector } from "react-redux";
+import { favouriteSelector } from "../redux/favouriteReducer";
+import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const Title = styled(Text)`
   color: ${theme.colors.white};
@@ -23,17 +26,27 @@ justify-content:center;
 padding-top 50px;
 `;
 const FavouritList = () => {
-  return (
-    <Box>
-      <FlatList
-        data={artist}
-        renderItem={({ item }) => <SongList song={item} />}
-        keyExtractor={(item) => item.id}
-        showsVerticalScrollIndicator={false}
-        ListHeaderComponent={<Title>Brani Preferiti</Title>}
-      />
-    </Box>
-  );
+  const favourite = useSelector(favouriteSelector);
+  let stringJson = JSON.stringify(favourite);
+  const parseJson = JSON.parse(stringJson);
+  const newList = parseJson.favourites;
+  const newFavourite = newList.reverse();
+
+  if (newList[0] !== undefined) {
+    return (
+      <Box>
+        <FlatList
+          data={newFavourite}
+          renderItem={({ item }) => <SongList song={item} />}
+          keyExtractor={(item) => item.id}
+          showsVerticalScrollIndicator={false}
+          ListHeaderComponent={<Title>Brani Preferiti</Title>}
+        />
+      </Box>
+    );
+  } else {
+    return <Title>Dic funziona</Title>;
+  }
 };
 
 export default FavouritList;

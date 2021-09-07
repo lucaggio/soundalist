@@ -21,6 +21,9 @@ import { AppContext } from "./appContext";
 
 import Amplify from "aws-amplify";
 import config from "./src/aws-exports";
+
+import { Provider } from "react-redux";
+import { store } from "./src/redux/store";
 Amplify.configure(config);
 
 const Stack = createStackNavigator();
@@ -52,16 +55,18 @@ export default function App() {
   } else {
     return (
       <SafeAreaProvider>
-        <AppContext.Provider
-          value={{
-            songId,
-            setSongId: (id: string) => setSongId(id),
-          }}
-        >
-          <Navigation colorScheme={"dark"} />
-          <StatusBar />
-          <PlayerWidget />
-        </AppContext.Provider>
+        <Provider store={store}>
+          <AppContext.Provider
+            value={{
+              songId,
+              setSongId: (id: string) => setSongId(id),
+            }}
+          >
+            <Navigation colorScheme={"dark"} />
+            <StatusBar />
+            <PlayerWidget />
+          </AppContext.Provider>
+        </Provider>
       </SafeAreaProvider>
 
       // <GenreScreen />
