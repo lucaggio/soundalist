@@ -29,10 +29,13 @@ justify-content: center;
 align-items: center;
 border-radius:100
 background:#000
-border: 1px solid ${theme.colors.pink}
+border: 1px solid ${(props) => props.theme}
 margin: 30px 0 25px 0
 
 `;
+PlayButton.defaultProps = {
+  theme: `${theme.colors.pink}`,
+};
 const ButtonText = styled(Text)`
   color: ${theme.colors.white};
   font-size: 20;
@@ -45,6 +48,17 @@ interface SongListHeaderProps {
 
 const SongListHeader = (props: SongListHeaderProps) => {
   const { artist } = props;
+  const colorType = artist.artistCategory.title;
+  const color = () => {
+    switch (colorType) {
+      case "TECHNO" || "Techno":
+        return `${theme.colors.pink}`;
+      case "HOUSE" || "House":
+        return `${theme.colors.red}`;
+      case "AMBIENT" || "Ambient":
+        return `${theme.colors.green}`;
+    }
+  };
   return (
     <View
       style={{
@@ -56,7 +70,7 @@ const SongListHeader = (props: SongListHeaderProps) => {
         <ArtistImage source={{ uri: artist.image }} />
         <Title>{artist.name}</Title>
         <TouchableOpacity>
-          <PlayButton>
+          <PlayButton theme={color()}>
             <ButtonText>PLAY</ButtonText>
           </PlayButton>
         </TouchableOpacity>
