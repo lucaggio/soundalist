@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useContext, useReducer } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import theme from "./theme";
 import { Text, ImageBackground, View, TouchableOpacity } from "react-native";
 import styled from "styled-components";
-import { Song } from "../../types";
 import RollingText from "react-native-rolling-text";
-import { Entypo, AntDesign, FontAwesome } from "@expo/vector-icons";
-import { Audio } from "expo-av";
+import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { Sound } from "expo-av/build/Audio/Sound";
 
 import { AppContext } from "../../appContext";
@@ -14,6 +12,8 @@ import { getSong } from "../graphql/queries";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavourite, removeFavourite } from "../redux/favouriteActions";
 import { favouriteSelector } from "../redux/favouriteReducer";
+import { playerWidgetSelector } from "../redux/playerWidgetReducer";
+import { isWidgetExixting } from "../redux/playerWidgetActions";
 
 const Box = styled(View)`
   position:absolute
@@ -79,8 +79,9 @@ const PlayerWidget = () => {
 
   const { songId } = useContext(AppContext);
 
-  const dispatch = useDispatch();
   const selector = useSelector(favouriteSelector);
+  const widgetSelector = useSelector(playerWidgetSelector);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchSong = async () => {
@@ -119,6 +120,7 @@ const PlayerWidget = () => {
   useEffect(() => {
     if (song) {
       playCurrentSong();
+      dispatch(isWidgetExixting());
     }
   }, [song]);
 
@@ -192,7 +194,7 @@ const PlayerWidget = () => {
                 size={24}
                 color={theme.colors.white}
               />
-              {console.log(selector)}
+              {console.log(widgetSelector.existing)}
             </IconBox>
           </RightBox>
         </RowBox>

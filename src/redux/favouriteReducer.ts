@@ -3,7 +3,7 @@ import { ADD_FAVOURITE, REMOVE_FAVOURITE } from "./config";
 import { IFavourite } from "./favouriteActions";
 import { IStateMain } from "./rootReducer";
 
-export interface IState {
+interface IState {
   favourites: Array<IFavourite>;
 }
 export const initialState: IState = {

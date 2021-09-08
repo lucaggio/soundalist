@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import theme from "../../components/theme";
 
 import { API, graphqlOperation } from "aws-amplify";
@@ -8,6 +8,10 @@ import { listArtistCategories } from "../../graphql/queries";
 
 import ArtistCategory from "../../components/ArtistCategory/ArtistCategory";
 import { useEffect } from "react";
+
+import LinearGradientComponent from "../linearGradient";
+import { useSelector } from "react-redux";
+import { playerWidgetSelector } from "../../redux/playerWidgetReducer";
 
 export const ArtistTitle = styled(Text)`
   color: ${theme.colors.white};
@@ -20,7 +24,7 @@ export const ArtistTitle = styled(Text)`
 const Box = styled(View)`
 flex:1;
 background:${theme.colors.black};
-padding-top 50px;
+padding-top 60px;
 `;
 
 interface categoryTypeProps {
@@ -30,6 +34,8 @@ interface categoryTypeProps {
 const CategoryType = (props: categoryTypeProps) => {
   const [index, setIndex] = useState<number>(0);
   const [categories, setCategories] = useState([]);
+
+  const widgetSelector = useSelector(playerWidgetSelector);
 
   useEffect(() => {
     const createIndex = () => {
@@ -51,7 +57,6 @@ const CategoryType = (props: categoryTypeProps) => {
       try {
         const data = await API.graphql(graphqlOperation(listArtistCategories));
         setCategories(data.data.listArtistCategories.items);
-        console.log(categories[2].artist.items[1]);
       } catch (e) {
         console.log(e);
       }
@@ -67,6 +72,7 @@ const CategoryType = (props: categoryTypeProps) => {
   if (isCategory) {
     return (
       <Box>
+        <LinearGradientComponent type={isCategory.title} />
         <ArtistCategory
           title={isCategory.title}
           artist={isCategory.artist.items}
@@ -76,5 +82,4 @@ const CategoryType = (props: categoryTypeProps) => {
   }
   return null;
 };
-
 export default CategoryType;

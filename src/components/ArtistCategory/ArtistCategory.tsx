@@ -10,11 +10,16 @@ const Title = styled(Text)`
   color: ${theme.colors.white};
   font-size: 40;
   text-align: center;
-  margin: 30px 0 20px 0;
+  margin: 50px 0 20px 0;
   font-family: ${theme.fontFamily.title};
 `;
 const Box = styled(View)`
 padding-top 50px;
+padding-bottom:22
+`;
+const Space = styled(View)`
+padding-top 50px;
+padding-bottom:22
 `;
 const ArtistList = styled(FlatList)`
   margin: 10 0;
@@ -36,6 +41,7 @@ const ArtistCategory = (props: CategoryProps) => {
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
       />
+      <Space />
     </Box>
   );
 };

@@ -4,11 +4,12 @@ import CardBox from "../components/CardBox";
 import { FlatList, Text, View } from "react-native";
 import { Dimensions } from "react-native";
 import theme from "../components/theme";
-import artist from "../data/artist";
 import SongList from "../components/SongList";
 import { useSelector } from "react-redux";
 import { favouriteSelector } from "../redux/favouriteReducer";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { playerWidgetSelector } from "../redux/playerWidgetReducer";
+import SpaceWidget from "../components/spaceWidget";
 
 const Title = styled(Text)`
   color: ${theme.colors.white};
@@ -16,13 +17,12 @@ const Title = styled(Text)`
   margin: 10px 0 10px 0px;
   font-family: ${theme.fontFamily.medium};
   text-align: center;
+  padding-top: 50;
 `;
 const Box = styled(View)`
 flex:1;
 background: ${theme.colors.black};
 display:flex;
-flex-direction:column;
-justify-content:center;
 padding-top 50px;
 `;
 const FavouritList = () => {
@@ -31,6 +31,8 @@ const FavouritList = () => {
   const parseJson = JSON.parse(stringJson);
   const newList = parseJson.favourites;
   const newFavourite = newList.reverse();
+
+  const widgetSelector = useSelector(playerWidgetSelector);
 
   if (newList[0] !== undefined) {
     return (
@@ -42,10 +44,15 @@ const FavouritList = () => {
           showsVerticalScrollIndicator={false}
           ListHeaderComponent={<Title>Brani Preferiti</Title>}
         />
+        <SpaceWidget />
       </Box>
     );
   } else {
-    return <Title>Dic funziona</Title>;
+    return (
+      <Box>
+        <Title>Dic funziona</Title>
+      </Box>
+    );
   }
 };
 

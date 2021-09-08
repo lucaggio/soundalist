@@ -5,17 +5,19 @@ import theme from "./theme";
 import { Artist } from "../../types";
 
 const Box = styled(View)`
-  margin-top: 10;
+  padding-top: 65;
   justify-content: center;
   align-items: center;
 `;
 const ArtistImage = styled(Image)`
-height:150
-width:150
+height:160
+width:160
 border-radius: 100
 
 `;
 const Title = styled(Text)`
+position:absolute
+top:170
 font-size:35
   color: ${theme.colors.white};
   font-family: ${theme.fontFamily.regular}
@@ -28,7 +30,7 @@ align-items: center;
 border-radius:100
 background:#000
 border: 1px solid ${theme.colors.pink}
-margin: 10px 0
+margin: 30px 0 25px 0
 
 `;
 const ButtonText = styled(Text)`
@@ -48,7 +50,6 @@ const SongListHeader = (props: SongListHeaderProps) => {
       style={{
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: `${theme.colors.black}`,
       }}
     >
       <Box>
