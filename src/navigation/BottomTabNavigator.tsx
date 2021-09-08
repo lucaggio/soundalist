@@ -26,10 +26,15 @@ import { TouchableHighlight } from "react-native";
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
+  const tabNavBgColor = `${theme.colors.black}`;
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
-      tabBarOptions={{ activeTintColor: theme.colors.white }}
+      tabBarOptions={{
+        activeTintColor: theme.colors.white,
+        activeBackgroundColor: tabNavBgColor,
+        inactiveBackgroundColor: tabNavBgColor,
+      }}
     >
       <BottomTab.Screen
         name="Home"

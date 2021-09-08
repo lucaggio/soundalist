@@ -50,7 +50,6 @@ const SongListHeader = (props: SongListHeaderProps) => {
       style={{
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: `${theme.colors.black}`,
       }}
     >
       <Box>

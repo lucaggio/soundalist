@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Text, View } from "react-native";
+import { Text, View, StyleSheet } from "react-native";
 import theme from "../../components/theme";
 
 import { API, graphqlOperation } from "aws-amplify";
@@ -8,6 +8,8 @@ import { listArtistCategories } from "../../graphql/queries";
 
 import ArtistCategory from "../../components/ArtistCategory/ArtistCategory";
 import { useEffect } from "react";
+
+import LinearGradientComponent from "../linearGradient";
 
 export const ArtistTitle = styled(Text)`
   color: ${theme.colors.white};
@@ -51,7 +53,6 @@ const CategoryType = (props: categoryTypeProps) => {
       try {
         const data = await API.graphql(graphqlOperation(listArtistCategories));
         setCategories(data.data.listArtistCategories.items);
-        console.log(categories[2].artist.items[1]);
       } catch (e) {
         console.log(e);
       }
@@ -67,6 +68,7 @@ const CategoryType = (props: categoryTypeProps) => {
   if (isCategory) {
     return (
       <Box>
+        <LinearGradientComponent type={isCategory.title} />
         <ArtistCategory
           title={isCategory.title}
           artist={isCategory.artist.items}
@@ -76,5 +78,4 @@ const CategoryType = (props: categoryTypeProps) => {
   }
   return null;
 };
-
 export default CategoryType;

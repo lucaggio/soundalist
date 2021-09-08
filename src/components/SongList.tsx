@@ -10,8 +10,7 @@ const Box = styled(View)`
   flex-direction: row
   padding: 5px 0px 5px 10px
   margin: 1px 0;
-  background: ${theme.colors.totalBlack}ef
-`;
+  background: ${theme.colors.black}aa`;
 const ColumnBox = styled(View)`
   flex-direction: column
   justify-content: space-around

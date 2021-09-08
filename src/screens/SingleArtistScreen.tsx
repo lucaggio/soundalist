@@ -10,6 +10,7 @@ import theme from "../components/theme";
 
 import { API, graphqlOperation } from "aws-amplify";
 import { getArtist } from "../graphql/queries";
+import LinearGradientComponent from "../components/linearGradient";
 
 const Box = styled(View)`
   background: ${theme.colors.black};
@@ -32,22 +33,18 @@ const SingleArtistScreen = () => {
           graphqlOperation(getArtist, { id: artistId })
         );
         setArtist(data.data.getArtist);
-        console.log(artist);
       } catch (e) {
         console.log(e);
       }
     };
     fetchArtistDetails();
   }, []);
-  // const count = route.params.id;
-
-  // const { artist } = singleArtist;
-
   if (!artist) {
     return <Text> Loading...</Text>;
   } else {
     return (
       <Box>
+        <LinearGradientComponent type={artist.artistCategory.title} />
         <FlatList
           data={artist.songs.items}
           renderItem={({ item }) => <SongList song={item} />}
