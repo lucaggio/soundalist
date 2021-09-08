@@ -15,6 +15,11 @@ const Title = styled(Text)`
 `;
 const Box = styled(View)`
 padding-top 50px;
+padding-bottom:22
+`;
+const Space = styled(View)`
+padding-top 50px;
+padding-bottom:22
 `;
 const ArtistList = styled(FlatList)`
   margin: 10 0;
@@ -36,6 +41,7 @@ const ArtistCategory = (props: CategoryProps) => {
         keyExtractor={(item) => item.id}
         showsVerticalScrollIndicator={false}
       />
+      <Space />
     </Box>
   );
 };

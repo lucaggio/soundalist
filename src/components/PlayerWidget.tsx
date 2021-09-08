@@ -1,11 +1,9 @@
-import React, { useState, useEffect, useContext, useReducer } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import theme from "./theme";
 import { Text, ImageBackground, View, TouchableOpacity } from "react-native";
 import styled from "styled-components";
-import { Song } from "../../types";
 import RollingText from "react-native-rolling-text";
-import { Entypo, AntDesign, FontAwesome } from "@expo/vector-icons";
-import { Audio } from "expo-av";
+import { AntDesign, FontAwesome } from "@expo/vector-icons";
 import { Sound } from "expo-av/build/Audio/Sound";
 
 import { AppContext } from "../../appContext";
@@ -196,7 +194,7 @@ const PlayerWidget = () => {
                 size={24}
                 color={theme.colors.white}
               />
-              {console.log(widgetSelector)}
+              {console.log(widgetSelector.existing)}
             </IconBox>
           </RightBox>
         </RowBox>

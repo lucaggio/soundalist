@@ -10,6 +10,8 @@ import ArtistCategory from "../../components/ArtistCategory/ArtistCategory";
 import { useEffect } from "react";
 
 import LinearGradientComponent from "../linearGradient";
+import { useSelector } from "react-redux";
+import { playerWidgetSelector } from "../../redux/playerWidgetReducer";
 
 export const ArtistTitle = styled(Text)`
   color: ${theme.colors.white};
@@ -32,6 +34,8 @@ interface categoryTypeProps {
 const CategoryType = (props: categoryTypeProps) => {
   const [index, setIndex] = useState<number>(0);
   const [categories, setCategories] = useState([]);
+
+  const widgetSelector = useSelector(playerWidgetSelector);
 
   useEffect(() => {
     const createIndex = () => {

@@ -4,11 +4,12 @@ import CardBox from "../components/CardBox";
 import { FlatList, Text, View } from "react-native";
 import { Dimensions } from "react-native";
 import theme from "../components/theme";
-import artist from "../data/artist";
 import SongList from "../components/SongList";
 import { useSelector } from "react-redux";
 import { favouriteSelector } from "../redux/favouriteReducer";
 import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+import { playerWidgetSelector } from "../redux/playerWidgetReducer";
+import SpaceWidget from "../components/spaceWidget";
 
 const Title = styled(Text)`
   color: ${theme.colors.white};
@@ -31,6 +32,8 @@ const FavouritList = () => {
   const newList = parseJson.favourites;
   const newFavourite = newList.reverse();
 
+  const widgetSelector = useSelector(playerWidgetSelector);
+
   if (newList[0] !== undefined) {
     return (
       <Box>
@@ -41,6 +44,7 @@ const FavouritList = () => {
           showsVerticalScrollIndicator={false}
           ListHeaderComponent={<Title>Brani Preferiti</Title>}
         />
+        <SpaceWidget />
       </Box>
     );
   } else {
