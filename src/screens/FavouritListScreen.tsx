@@ -16,13 +16,12 @@ const Title = styled(Text)`
   margin: 10px 0 10px 0px;
   font-family: ${theme.fontFamily.medium};
   text-align: center;
+  padding-top: 50;
 `;
 const Box = styled(View)`
 flex:1;
 background: ${theme.colors.black};
 display:flex;
-flex-direction:column;
-justify-content:center;
 padding-top 50px;
 `;
 const FavouritList = () => {
@@ -45,7 +44,11 @@ const FavouritList = () => {
       </Box>
     );
   } else {
-    return <Title>Dic funziona</Title>;
+    return (
+      <Box>
+        <Title>Dic funziona</Title>
+      </Box>
+    );
   }
 };
 

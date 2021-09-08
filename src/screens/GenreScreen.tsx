@@ -16,12 +16,11 @@ const Title = styled(Text)`
   font-family: ${theme.fontFamily.regular};
 `;
 const Box = styled(View)`
-flex:1;
-background: ${theme.colors.black};
-display:flex;
-flex-direction:column;
-justify-content:center;
-padding-top 50px;
+  flex: 1;
+  background: ${theme.colors.black};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 `;
 
 const GenreScreen = () => {

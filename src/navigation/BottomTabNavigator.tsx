@@ -8,10 +8,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createStackNavigator } from "@react-navigation/stack";
 import * as React from "react";
 
-import Colors from "../constants/Colors";
-import useColorScheme from "../hooks/useColorScheme";
-import TabOneScreen from "../screens/TabOneScreen";
-import TabTwoScreen from "../screens/TabTwoScreen";
 import {
   BottomTabParamList,
   TabOneParamList,
@@ -23,16 +19,17 @@ import TechnoScreen from "../screens/TechnoScreen";
 import HouseScreen from "../screens/HouseScreen";
 import AmbientScreen from "../screens/AmbientScreen";
 import SingleArtistScreen from "../screens/SingleArtistScreen";
+import { Ionicons } from "@expo/vector-icons";
+import theme from "../components/theme";
+import { TouchableHighlight } from "react-native";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 
 export default function BottomTabNavigator() {
-  const colorScheme = useColorScheme();
-
   return (
     <BottomTab.Navigator
       initialRouteName="Home"
-      tabBarOptions={{ activeTintColor: Colors[colorScheme].tint }}
+      tabBarOptions={{ activeTintColor: theme.colors.white }}
     >
       <BottomTab.Screen
         name="Home"
@@ -72,34 +69,38 @@ const TabOneStack = createStackNavigator<TabOneParamList>();
 
 function TabOneNavigator() {
   return (
-    <TabOneStack.Navigator>
+    <TabOneStack.Navigator
+      screenOptions={{
+        headerTransparent: true,
+      }}
+    >
       <TabOneStack.Screen
         name="HomeScreen"
         component={GenreScreen}
-        options={{ headerTitle: "Home" }}
+        options={{ header: () => null }}
       />
 
       <TabOneStack.Screen
         name="TechnoScreen"
         component={TechnoScreen}
-        options={{ headerTitle: "Techno" }}
+        options={{ headerTitle: "" }}
       />
 
       <TabOneStack.Screen
         name="HouseScreen"
         component={HouseScreen}
-        options={{ headerTitle: "House" }}
+        options={{ headerTitle: "" }}
       />
 
       <TabOneStack.Screen
         name="AmbientScreen"
         component={AmbientScreen}
-        options={{ headerTitle: "Ambient" }}
+        options={{ headerTitle: "" }}
       />
       <TabOneStack.Screen
         name="SingleArtistScreen"
         component={SingleArtistScreen}
-        options={{ headerTitle: "SingleArtistScreen" }}
+        options={{ headerTitle: "" }}
       />
     </TabOneStack.Navigator>
   );
@@ -109,11 +110,15 @@ const TabTwoStack = createStackNavigator<TabTwoParamList>();
 
 function TabTwoNavigator() {
   return (
-    <TabTwoStack.Navigator>
+    <TabTwoStack.Navigator
+      screenOptions={{
+        headerTransparent: true,
+      }}
+    >
       <TabTwoStack.Screen
         name="YourListScreen"
         component={FavouritList}
-        options={{ headerTitle: "Preferiti" }}
+        options={{ headerTitle: "" }}
       />
     </TabTwoStack.Navigator>
   );

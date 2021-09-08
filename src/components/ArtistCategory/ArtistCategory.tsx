@@ -10,7 +10,7 @@ const Title = styled(Text)`
   color: ${theme.colors.white};
   font-size: 40;
   text-align: center;
-  margin: 30px 0 20px 0;
+  margin: 50px 0 20px 0;
   font-family: ${theme.fontFamily.title};
 `;
 const Box = styled(View)`

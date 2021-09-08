@@ -20,7 +20,7 @@ export const ArtistTitle = styled(Text)`
 const Box = styled(View)`
 flex:1;
 background:${theme.colors.black};
-padding-top 50px;
+padding-top 60px;
 `;
 
 interface categoryTypeProps {

@@ -67,6 +67,7 @@ export default function App() {
             <PlayerWidget />
           </AppContext.Provider>
         </Provider>
+        <StatusBar style="light" />
       </SafeAreaProvider>
 
       // <GenreScreen />
