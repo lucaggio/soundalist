@@ -14,16 +14,29 @@ import SpaceWidget from "../components/spaceWidget";
 const Title = styled(Text)`
   color: ${theme.colors.white};
   font-size: 25;
-  margin: 10px 0 10px 0px;
+  margin: 20px 0 20px 0px;
   font-family: ${theme.fontFamily.medium};
   text-align: center;
   padding-top: 50;
+`;
+const NoTitle = styled(Text)`
+  color: ${theme.colors.white};
+  font-size: 18;
+
+  font-family: ${theme.fontFamily.regular};
+  text-align: center;
+  margin-top: 80;
 `;
 const Box = styled(View)`
 flex:1;
 background: ${theme.colors.black};
 display:flex;
 padding-top 50px;
+`;
+const BoxTitle = styled(View)`
+  flex: 1;
+  background: ${theme.colors.black};
+  display: flex;
 `;
 const FavouritList = () => {
   const favourite = useSelector(favouriteSelector);
@@ -50,7 +63,10 @@ const FavouritList = () => {
   } else {
     return (
       <Box>
-        <Title>Dic funziona</Title>
+        <Title>Brani Preferiti</Title>
+        <BoxTitle>
+          <NoTitle>Non hai brani preferiti</NoTitle>
+        </BoxTitle>
       </Box>
     );
   }
