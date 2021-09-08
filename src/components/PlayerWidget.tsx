@@ -14,6 +14,8 @@ import { getSong } from "../graphql/queries";
 import { useDispatch, useSelector } from "react-redux";
 import { addFavourite, removeFavourite } from "../redux/favouriteActions";
 import { favouriteSelector } from "../redux/favouriteReducer";
+import { playerWidgetSelector } from "../redux/playerWidgetReducer";
+import { isWidgetExixting } from "../redux/playerWidgetActions";
 
 const Box = styled(View)`
   position:absolute
@@ -79,8 +81,9 @@ const PlayerWidget = () => {
 
   const { songId } = useContext(AppContext);
 
-  const dispatch = useDispatch();
   const selector = useSelector(favouriteSelector);
+  const widgetSelector = useSelector(playerWidgetSelector);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchSong = async () => {
@@ -119,6 +122,7 @@ const PlayerWidget = () => {
   useEffect(() => {
     if (song) {
       playCurrentSong();
+      dispatch(isWidgetExixting());
     }
   }, [song]);
 
@@ -192,7 +196,7 @@ const PlayerWidget = () => {
                 size={24}
                 color={theme.colors.white}
               />
-              {console.log(selector)}
+              {console.log(widgetSelector)}
             </IconBox>
           </RightBox>
         </RowBox>
