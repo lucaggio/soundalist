@@ -10,7 +10,6 @@ import theme from "../components/theme";
 import { API, graphqlOperation } from "aws-amplify";
 import { getArtist } from "../graphql/queries";
 import LinearGradientComponent from "../components/linearGradient";
-import SpaceWidget from "../components/spaceWidget";
 import { useSelector } from "react-redux";
 import { playerWidgetSelector } from "../redux/playerWidgetReducer";
 

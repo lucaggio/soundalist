@@ -1,13 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-import CardBox from "../components/CardBox";
+
 import { FlatList, Text, View } from "react-native";
-import { Dimensions } from "react-native";
+
 import theme from "../components/theme";
 import SongList from "../components/SongList";
 import { useSelector } from "react-redux";
 import { favouriteSelector } from "../redux/favouriteReducer";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
+
 import { playerWidgetSelector } from "../redux/playerWidgetReducer";
 import SpaceWidget from "../components/spaceWidget";
 

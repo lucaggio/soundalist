@@ -19,9 +19,7 @@ import TechnoScreen from "../screens/TechnoScreen";
 import HouseScreen from "../screens/HouseScreen";
 import AmbientScreen from "../screens/AmbientScreen";
 import SingleArtistScreen from "../screens/SingleArtistScreen";
-import { Ionicons } from "@expo/vector-icons";
 import theme from "../components/theme";
-import { TouchableHighlight } from "react-native";
 
 const BottomTab = createBottomTabNavigator<BottomTabParamList>();
 

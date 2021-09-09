@@ -47,7 +47,7 @@ const SongList = (props: SongListProps) => {
     setSongId(song.id);
   };
   const stringDelimiter = (str: string) => {
-    if (str.length <= 30) {
+    if (str.length < 30) {
       return str;
     } else {
       return str.substr(0, 29) + "...";
