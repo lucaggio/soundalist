@@ -46,6 +46,14 @@ const SongList = (props: SongListProps) => {
   const onPlay = () => {
     setSongId(song.id);
   };
+  const stringDelimiter = (str: string) => {
+    if (str.length <= 30) {
+      return str;
+    } else {
+      return str.substr(0, 29) + "...";
+    }
+  };
+  const creator = song.creator;
 
   return (
     <TouchableOpacity onPress={onPlay}>
@@ -53,7 +61,7 @@ const SongList = (props: SongListProps) => {
         <RoundImage source={{ uri: song.image }}></RoundImage>
         <ColumnBox>
           <Title>{song.genre}</Title>
-          <Artist>{song.creator}</Artist>
+          <Artist>{stringDelimiter(creator)}</Artist>
         </ColumnBox>
       </Box>
     </TouchableOpacity>
