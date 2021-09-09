@@ -162,7 +162,7 @@ const PlayerWidget = () => {
       (item) => item.id == `${favourite.id}`
     );
     const size = (str: string) => {
-      return str.length > 20 ? true : false;
+      return str.length > 24 ? true : false;
     };
 
     return (
