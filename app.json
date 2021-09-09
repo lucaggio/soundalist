@@ -26,6 +26,11 @@
       },
       "package": "com.lucaggio134.Soundalist"
     },
+    "androidNavigationBar": {
+      "barStyle": "light-content",
+      "backgroundColor": "#222222"
+    },
+
     "web": {
       "favicon": "./src/assets/images/icon.png"
     }
