@@ -56,11 +56,14 @@ const Title = styled(Text)`
   font-size:14
   font-family: ${theme.fontFamily.regular}
   color:${theme.colors.white}
+
 `;
 const Artist = styled(Text)`
   font-family: ${theme.fontFamily.medium}
+  text-align:center
   font-size:15
   color:${theme.colors.white}
+
 `;
 
 const IconBox = styled(View)`
@@ -158,6 +161,9 @@ const PlayerWidget = () => {
     const favouriteList = newList.favourites.some(
       (item) => item.id == `${favourite.id}`
     );
+    const size = (str: string) => {
+      return str.length > 20 ? true : false;
+    };
 
     return (
       <Box>
@@ -178,9 +184,16 @@ const PlayerWidget = () => {
 
           <RightBox>
             <ColumnBox>
-              <RollingText durationMsPerWidth={15}>
+              {size(song.creator) ? (
+                <RollingText
+                  durationMsPerWidth={15}
+                  style={{ justifyContent: "center" }}
+                >
+                  <Artist>{song.creator}</Artist>
+                </RollingText>
+              ) : (
                 <Artist>{song.creator}</Artist>
-              </RollingText>
+              )}
               <Title>{song.genre}</Title>
             </ColumnBox>
             <IconBox>

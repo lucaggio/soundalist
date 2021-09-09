@@ -14,8 +14,8 @@ import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 const Title = styled(Text)`
   color: ${theme.colors.white};
   text-align:center
-  font-size: 15;
-  margin: 0 0 20px 10px;
+  font-size: 10;
+  margin: 0 0 5px 10px;
   font-family: ${theme.fontFamily.regular};
 `;
 const Box = styled(View)`
@@ -47,7 +47,6 @@ const GenreScreen = () => {
         end={[1, 0.5]}
         style={styles.backgroundBottomBlue}
       />
-      <Title>Mind your music </Title>
 
       <CardBox
         navigate="TechnoScreen"
