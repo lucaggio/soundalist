@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View } from "react-native";
 import theme from "../../components/theme";
 
 import { API, graphqlOperation } from "aws-amplify";

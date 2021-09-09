@@ -2,14 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import CardBox from "../components/CardBox";
 import { Text, View, StyleSheet } from "react-native";
-import { Dimensions } from "react-native";
 import theme from "../components/theme";
-
 import { LinearGradient } from "expo-linear-gradient";
-
-import { useNavigation } from "@react-navigation/native";
-import TechnoScreen from "./TechnoScreen";
-import { TouchableWithoutFeedback } from "react-native-gesture-handler";
 
 const Title = styled(Text)`
   color: ${theme.colors.white};
